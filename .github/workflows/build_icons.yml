@@ -28,3 +28,7 @@ jobs:
        cd icons
        npm install
        node tools/icons-build.js
+    - run: git add -u .
+    - run: git commit -m "Rebuilt font files"
+    - run: git push
+       
