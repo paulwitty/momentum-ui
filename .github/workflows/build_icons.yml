@@ -29,6 +29,6 @@ jobs:
        npm install
        node tools/icons-build.js
     - run: git add -u .
-    - run: git commit -m "Rebuilt font files"
+    - run: git commit --author="Icon build bot <icons@example.com>" -m "Rebuilt font files"
     - run: git push
        
