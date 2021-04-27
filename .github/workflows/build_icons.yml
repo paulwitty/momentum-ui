@@ -3,10 +3,10 @@
 name: Build icon font files
 
 on:
-  workflow_dispatch
-  #pull_request:
-  #  types: [ opened, edited ]
-  #  branches: [ master ]
+  #workflow_dispatch
+  pull_request:
+    types: [ opened, edited ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -25,12 +25,10 @@ jobs:
     - name: Find changed icon SVGs
       run: |
         echo 'ADDED_FILES<<EOF' >> $GITHUB_ENV
-        #git diff --diff-filter=A --name-only $GITHUB_BASE_REF | grep "icons/svg"
-        git diff --diff-filter=A --name-only master | grep "icons/svg"
+        git diff --diff-filter=A --name-only $GITHUB_BASE_REF | grep "icons/svg"
         echo 'EOF' >> $GITHUB_ENV
         echo 'MODIFIED_FILES<<EOF' >> $GITHUB_ENV
-        #git diff --diff-filter=M --name-only $GITHUB_BASE_REF | grep "icons/svg"
-        git diff --diff-filter=M --name-only master | grep "icons/svg"
+        git diff --diff-filter=M --name-only $GITHUB_BASE_REF | grep "icons/svg"
         echo 'EOF' >> $GITHUB_ENV
         
     - name: List changed icons
